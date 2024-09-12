@@ -1,0 +1,238 @@
+
+<!DOCTYPE html>
+<html lang="fa">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Time Bank</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            font-family: 'Vazirmatn', sans-serif;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            text-align: center;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 0 20px;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+            direction: rtl;
+            animation: fadeInContainer 1.5s ease;
+        }
+
+        h1 {
+            color: #00796b;
+            font-size: 28px;
+            margin-bottom: 10px;
+            animation: bounceIn 1.5s ease;
+        }
+
+        h2 {
+            color: #004d40;
+            font-size: 24px;
+            margin-bottom: 30px;
+            animation: fadeInText 2s ease;
+        }
+
+        p {
+            color: #555;
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            background-color: #00796b;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+
+        .btn:hover {
+            background-color: #004d40;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-family: 'Vazirmatn', sans-serif;
+            box-sizing: border-box;
+        }
+
+        .btn-send {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-send:hover {
+            background-color: #388E3C;
+        }
+
+        #feedbackResponse {
+            color: green;
+            font-size: 16px;
+        }
+
+        .footer {
+            margin-top: 30px;
+            color: #999;
+            font-size: 14px;
+        }
+
+        .footer p {
+            margin: 0;
+        }
+
+        .footer p.english {
+            margin-top: 5px;
+            font-style: italic;
+        }
+
+        @keyframes fadeInText {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes bounceIn {
+            0% {
+                transform: scale(0.8);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes fadeInContainer {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1, h2 {
+                font-size: 22px;
+            }
+
+            .btn,
+            .btn-send {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+        }
+
+        #message {
+            display: none;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 id="welcomeMessage">👋 سینا عزیز، به بانک زمان خوش آمدی!</h1>
+        <h2>🕰 اگر می‌خواهی آینده خوبی داشته باشی باید زمانت را ذخیره کنی</h2>
+
+        <button class="btn" onclick="showMessage()">📝 مشاهده</button>
+        <p class="message" id="message">⏳ شما هنوز زمانی ذخیره نکرده‌اید! با ذخیره بیشتر، می‌توانید در آینده از این زمان
+            برای خودتان استفاده کنید!</p>
+
+        <!-- فرم ارسال نظر -->
+        <h3>💬 خوشحال می‌شوم نظر و پیشنهادتون رو در مورد ارائه و ایده من ارسال کنید</h3>
+        <form action="https://formspree.io/f/mgvwbapn" method="POST">
+            <input type="text" name="name" placeholder="👤 نام شما" required><br>
+            <textarea name="message" rows="4" placeholder="✍️ نظر شما" required></textarea><br>
+            <button type="submit" class="btn-send">📤 ارسال نظر</button>
+        </form>
+        <div id="feedbackResponse" style="margin-top: 20px; display: none;">✅ نظر شما با موفقیت ارسال شد!</div>
+
+        <div class="footer">
+
+            <p class="english">Made by Roxana Timori <br> Copyright © 2024</p>
+        </div>
+    </div>
+
+    <script>
+        // نمایش پیام خوش آمدگویی
+        const username = "ستایش"; // نام کاربر را می‌توان از فرم ورود دریافت کرد
+        document.getElementById('welcomeMessage').textContent = `👋 ${username} عزیز، به بانک زمان خوش آمدی!`;
+
+        // نمایش پیام انگیزشی پس از کلیک روی دکمه "مشاهده"
+        function showMessage() {
+            const messageElement = document.getElementById('message');
+            messageElement.style.display = 'block';
+            setTimeout(() => {
+                messageElement.style.opacity = '1';
+            }, 100);
+        }
+    </script>
+</body>
+
+</html>
